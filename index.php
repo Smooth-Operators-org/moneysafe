@@ -1,3 +1,9 @@
+<?php
+require_once'includes/database.php';
+$consulta = "SELECT * FROM planes";
+$planes=mysqli_query($conectar,$consulta);
+$fila= mysqli_fetch_array($planes);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,25 +28,26 @@
   <link href="lib/animate/animate.min.css" rel="stylesheet">
 
   <!-- Main Stylesheet File -->
-    <link rel="stylesheet" href="estilos.css">
-
   <link href="css/style.css" rel="stylesheet">
 
   <!-- =======================================================
-      INICIO DE INDEX
+    Theme Name: Regna
+    Theme URL: https://bootstrapmade.com/regna-bootstrap-onepage-template/
+    Author: BootstrapMade.com
+    License: https://bootstrapmade.com/license/
   ======================================================= -->
 </head>
 
 <body>
 
   <!--==========================
-  HEADER
+  Header
   ============================-->
   <header id="header">
     <div class="container">
 
       <div id="logo" class="pull-left">
-        <a href="#hero"><img src="img/MS-Logo.png" width="150" height="50"  alt="" title="" ></img></a>
+        <a href="#hero"><img src="img/MS-Logo.png" alt="" title="" ></img></a>
         <!-- Uncomment below if you prefer to use a text logo 
         <h1><a href="#hero">Regna</a></h1>-->
       </div>
@@ -53,24 +60,22 @@
           <li><a href="#services">Productos</a></li>
           <li><a href="#team">Equipo</a></li>
           <li><a href="#contact">Contacto</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
         </ul>
       </nav><!-- #nav-menu-container -->
     </div>
+    <?php echo $fila ['nombre_plan']; ?>
   </header><!-- #header -->
 
   <!--==========================
-    SECCION HERO (CARRUSEL)
+    Hero Section
   ============================-->
   <section id="hero">
-    <div class="slider">
-      <ul>
-        <li><img src="img/blog_1.jpg" alt=""></li>
-        <li><img src="img/blog_2.jpg" alt=""></li>
-        <li><img src="img/blog_3.jpg" alt=""></li>
-        <li><img src="img/blog_4.jpg" alt=""></li>
-
-      </ul>   
-  </div>
+    <div class="hero-container">
+      <h1>Bienvenido a MoneySAFE</h1>
+      <h2>Un sitio web donde encontraras el software necesario para tus finanzas.</h2>
+      <a href="#about" class="btn-get-started">Empezemos</a>
+    </div>
   </section><!-- #hero -->
 
   <main id="main">
@@ -90,20 +95,20 @@
 
             <div class="icon-box wow fadeInUp">
               <div class="icon"><i class="fa fa-shopping-bag"></i></div>
-              <h4 class="title"><a href="">Calidad - Precio</a></h4>
-              <p class="description">Nos esforzamos en crear sistemas altamente capaces de realizar las tareas solicitadas por nuestros clientes, sin precios extremadamente disparados.</p>
+              <h4 class="title"><a href="">Eiusmod Tempor</a></h4>
+              <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p>
             </div>
 
             <div class="icon-box wow fadeInUp" data-wow-delay="0.2s">
               <div class="icon"><i class="fa fa-photo"></i></div>
-              <h4 class="title"><a href="">Diseños Intuitivos</a></h4>
-              <p class="description">Todo programa se crea cuidadosamente, insertando diseños y estructuras para un facil uso, sin dejar a un lado el desempeño profesional. </p>
+              <h4 class="title"><a href="">Magni Dolores</a></h4>
+              <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
             </div>
 
             <div class="icon-box wow fadeInUp" data-wow-delay="0.4s">
               <div class="icon"><i class="fa fa-bar-chart"></i></div>
-              <h4 class="title"><a href="">Resultados inmediatos</a></h4>
-              <p class="description">Podra notar la efectividad de nuestros programas en su negocio mas rapido de lo que se imagina. Puede dejar todo en nuestras manos, nosotros haremos lo mejor para usted.</p>
+              <h4 class="title"><a href="">Dolor Sitema</a></h4>
+              <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
             </div>
 
           </div>
@@ -115,34 +120,70 @@
     </section><!-- #about -->
 
     <!--==========================
+      Facts Section
+    ============================-->
+    <section id="facts">
+      <div class="container wow fadeIn">
+        <div class="section-header">
+          <h3 class="section-title">Estadisticas</h3>
+          <p class="section-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
+        </div>
+        <div class="row counters">
+
+  				<div class="col-lg-3 col-6 text-center">
+            <span data-toggle="counter-up">232</span>
+            <p>Clients</p>
+  				</div>
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-toggle="counter-up">521</span>
+            <p>Projects</p>
+  				</div>
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-toggle="counter-up">1,463</span>
+            <p>Hours Of Support</p>
+  				</div>
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-toggle="counter-up">15</span>
+            <p>Hard Workers</p>
+  				</div>
+
+  			</div>
+
+      </div>
+    </section><!-- #facts -->
+
+    <!--==========================
       SECCION SERVICIOS
     ============================-->
 <section id="services">
       <div class="container wow fadeIn">
         <div class="section-header">
           <h3 class="section-title">Productos</h3>
-          <p class="section-description">Descubre nuestra variedad de productos para amenizar tu día a día</p>
+          <p class="section-description">Descubre nuestra variedad de productos para amenizar tu dia a dia</p>
         </div>
         <div class="row">
           <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
             <div class="box">
               <div class="icon"><a href=""><i class="fa fa-desktop"></i></a></div>
               <h4 class="title"><a href="">Cañones</a></h4>
-              <p class="description">Te ayudara para gestionar los proyectores de tu empresa o escuela. Gracias a su diseño amigable, sera la mejor opción.</p>
+              <p class="description">    <?php echo $fila ['desc_plan']; ?></p>
             </div>
           </div>
           <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
             <div class="box">
               <div class="icon"><a href=""><i class="fa fa-bar-chart"></i></a></div>
               <h4 class="title"><a href="">Tandas</a></h4>
-              <p class="description">Podras crear y organizar tandas de dinero. Es un sistema donde podras gestionar facilmente todas tus tandas con los diferentes integrantes.</p>
+              <p class="description">    <?php echo $fila ['nombre_plan']; ?></p>
             </div>
           </div>
           <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
             <div class="box">
               <div class="icon"><a href=""><i class="fa fa-bar-chart"></i></a></div>
               <h4 class="title"><a href="">Pagos</a></h4>
-              <p class="description">Podras realisar pagos de diferentes diligencias, gracias a su facil uso quedaras enamorado de el.</p>
+              <p class="description">Este sistema creado para que puedas realisar los pagos de tus diferentes diligencias, gracias a su facil uso quedaras enamorado de el.</p>
             </div>
           </div>
           
@@ -151,89 +192,170 @@
     </section><!-- #services -->
 
     <!--==========================
-      SECCION PROMOS
+    Call To Action Section
     ============================-->
-    <div id="pricing" class="section pricing-section">
-      <div class="container">
-        <div class="section-header">         
-          <h2 class="section-title">Paquetes y Promociones</h2>
-            <p class="section-description">Contamos con distintos paquetes y promociones para cubrir tus necesidades</p>
+    <section id="call-to-action">
+      <div class="container wow fadeIn">
+        <div class="row">
+          <div class="col-lg-9 text-center text-lg-left">
+            <h3 class="cta-title">Call To Action</h3>
+            <p class="cta-text"> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          </div>
+          <div class="col-lg-3 cta-btn-container text-center">
+            <a class="cta-btn align-middle" href="#">Call To Action</a>
+          </div>
         </div>
 
-        <div class="row pricing-tables">
-          <div class="col-lg-4 col-md-4 col-xs-12">
-            <div class="pricing-table">
-              <div class="pricing-details">
-                <div class="icon">
-                  <i class="lni-rocket"></i>
-                </div>
-                <h2>Estandar</h2>
-                <ul>
-                  <li>Free Installation</li>
-                  <li>2 GB Storage</li>
-                  <li>Single User</li>
-                  <li>Sales Dashboard</li>
-                  <li>Minimal Features</li>
-                  <li>1000 Logs</li>
-                </ul>
-                <div class="price">$0<span>/mo</span></div>
-              </div>
-              <div class="plan-button">
-                <a href="#" class="btn btn-border">Comprar</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-4 col-xs-12">
-            <div class="pricing-table pricing-active">
-              <div class="pricing-details">
-                <div class="icon">
-                  <i class="lni-drop"></i>
-                </div>
-                <h2>Performance</h2>
-                <ul>
-                  <li>Free Installation</li>
-                  <li>10 GB Hosting</li>
-                  <li>5 Users</li>
-                  <li>Sales Dashboard</li>
-                  <li>Premium Features</li>
-                  <li>50,000 Logs</li>
-                </ul>
-                <div class="price">$99 <span>/mo</span></div>
-              </div>
-              <div class="plan-button">
-                <a href="#" class="btn btn-border">Comprar</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-4 col-xs-12">
-            <div class="pricing-table">
-              <div class="pricing-details">
-                <div class="icon">
-                  <i class="lni-briefcase"></i>
-                </div>
-                <h2>Premium</h2>
-                <ul>
-                  <li>Free Installation</li>
-                  <li>50 GB Hosting</li>
-                  <li>Unlimited Users</li>
-                  <li>Sales and Marketing Dashbaord</li>
-                  <li>Premium Features</li>
-                  <li>Unlimited Logs</li>
-                </ul>
-                <div class="price">$199 <span>/mo</span></div>
-              </div>
-              <div class="plan-button">
-                <a href="#" class="btn btn-border">Comprar</a>
-              </div>
-            </div>
-          </div>
-
-        </div>
       </div>
-    </div>
-    <!-- End Pricing Table Section -->
+    </section><!-- #call-to-action -->
+
+    <!--==========================
+      Portfolio Section
+    ============================-->
+    <section id="portfolio">
+      <div class="container wow fadeInUp">
+        <div class="section-header">
+          <h3 class="section-title">Portfolio</h3>
+          <p class="section-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
+        </div>
+        <div class="row">
+
+          <div class="col-lg-12">
+            <ul id="portfolio-flters">
+              <li data-filter=".filter-app, .filter-card, .filter-logo, .filter-web" class="filter-active">All</li>
+              <li data-filter=".filter-app">App</li>
+              <li data-filter=".filter-card">Card</li>
+              <li data-filter=".filter-logo">Logo</li>
+              <li data-filter=".filter-web">Web</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="row" id="portfolio-wrapper">
+          <div class="col-lg-3 col-md-6 portfolio-item filter-app">
+            <a href="">
+              <img src="img/portfolio/app1.jpg" alt="">
+              <div class="details">
+                <h4>App 1</h4>
+                <span>Alored dono par</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-web">
+            <a href="">
+              <img src="img/portfolio/web2.jpg" alt="">
+              <div class="details">
+                <h4>Web 2</h4>
+                <span>Alored dono par</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-app">
+            <a href="">
+              <img src="img/portfolio/app3.jpg" alt="">
+              <div class="details">
+                <h4>App 3</h4>
+                <span>Alored dono par</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-card">
+            <a href="">
+              <img src="img/portfolio/card1.jpg" alt="">
+              <div class="details">
+                <h4>Card 1</h4>
+                <span>Alored dono par</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-card">
+            <a href="">
+              <img src="img/portfolio/card2.jpg" alt="">
+              <div class="details">
+                <h4>Card 2</h4>
+                <span>Alored dono par</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-web">
+            <a href="">
+              <img src="img/portfolio/web3.jpg" alt="">
+              <div class="details">
+                <h4>Web 3</h4>
+                <span>Alored dono par</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-card">
+            <a href="">
+              <img src="img/portfolio/card3.jpg" alt="">
+              <div class="details">
+                <h4>Card 3</h4>
+                <span>Alored dono par</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-app">
+            <a href="">
+              <img src="img/portfolio/app2.jpg" alt="">
+              <div class="details">
+                <h4>App 2</h4>
+                <span>Alored dono par</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-logo">
+            <a href="">
+              <img src="img/portfolio/logo1.jpg" alt="">
+              <div class="details">
+                <h4>Logo 1</h4>
+                <span>Alored dono par</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-logo">
+            <a href="">
+              <img src="img/portfolio/logo3.jpg" alt="">
+              <div class="details">
+                <h4>Logo 3</h4>
+                <span>Alored dono par</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-web">
+            <a href="">
+              <img src="img/portfolio/web1.jpg" alt="">
+              <div class="details">
+                <h4>Web 1</h4>
+                <span>Alored dono par</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-logo">
+            <a href="">
+              <img src="img/portfolio/logo2.jpg" alt="">
+              <div class="details">
+                <h4>Logo 2</h4>
+                <span>Alored dono par</span>
+              </div>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- #portfolio -->
 
     <!--==========================
       SECCION EQUIPO
@@ -306,7 +428,7 @@
     </section><!-- #team -->
 
     <!--==========================
-      SECCION CONTÁCTO
+      Contact Section
     ============================-->
     <section id="contact">
       <div class="container wow fadeInUp">
@@ -327,7 +449,7 @@
             <div class="info">
               <div>
                 <i class="fa fa-map-marker"></i>
-                <p>Avenida Rodrigo Gómez Manzana 9<br>Lote 1-15, 38, 77507 Cancún, Q.R.</p>
+                <p>A108 Adam Street<br>New York, NY 535022</p>
               </div>
 
               <div>
@@ -385,7 +507,7 @@
   </main>
 
   <!--==========================
-    SECCION FOOTER
+    Footer
   ============================-->
   <footer id="footer">
     <div class="footer-top">
