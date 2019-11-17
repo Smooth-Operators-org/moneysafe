@@ -1,9 +1,23 @@
-<?php
-require_once'includes/database.php';
+<?php 
+require_once 'includes/database.php';
 $consulta = "SELECT * FROM planes";
-$planes=mysqli_query($conectar,$consulta);
-$fila= mysqli_fetch_array($planes);
-?>
+$planes =mysqli_query($conectar, $consulta);
+
+
+$consulp="SELECT * FROM promos";
+$promos=mysqli_query($conectar, $consulp);
+$fil2=mysqli_fetch_array($promos);
+$decon=0;
+/*
+                if (empty($decon) ) {
+                  $PrecioF=300;
+
+                }
+
+                $PrecioF=300 * ((100-$decon)/100);
+                echo $PrecioF*/
+                 
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,26 +42,25 @@ $fila= mysqli_fetch_array($planes);
   <link href="lib/animate/animate.min.css" rel="stylesheet">
 
   <!-- Main Stylesheet File -->
+    <link rel="stylesheet" href="estilos.css">
+
   <link href="css/style.css" rel="stylesheet">
 
   <!-- =======================================================
-    Theme Name: Regna
-    Theme URL: https://bootstrapmade.com/regna-bootstrap-onepage-template/
-    Author: BootstrapMade.com
-    License: https://bootstrapmade.com/license/
+      INICIO DE INDEX
   ======================================================= -->
 </head>
 
 <body>
 
   <!--==========================
-  Header
+  HEADER
   ============================-->
   <header id="header">
     <div class="container">
 
       <div id="logo" class="pull-left">
-        <a href="#hero"><img src="img/MS-Logo.png" alt="" title="" ></img></a>
+        <a href="#hero"><img src="img/MS-Logo.png" width="150" height="50"  alt="" title="" ></img></a>
         <!-- Uncomment below if you prefer to use a text logo 
         <h1><a href="#hero">Regna</a></h1>-->
       </div>
@@ -60,22 +73,25 @@ $fila= mysqli_fetch_array($planes);
           <li><a href="#services">Productos</a></li>
           <li><a href="#team">Equipo</a></li>
           <li><a href="#contact">Contacto</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
         </ul>
       </nav><!-- #nav-menu-container -->
     </div>
-    <?php echo $fila ['nombre_plan']; ?>
   </header><!-- #header -->
 
   <!--==========================
-    Hero Section
+    SECCION HERO (CARRUSEL)
   ============================-->
-  <section id="hero">
-    <div class="hero-container">
-      <h1>Bienvenido a MoneySAFE</h1>
-      <h2>Un sitio web donde encontraras el software necesario para tus finanzas.</h2>
-      <a href="#about" class="btn-get-started">Empezemos</a>
-    </div>
+    <div class="slider">
+  <div class="centrado">Bienvenido a Money Safe 
+    <br>un sitio Web donde encontraras el software necesario para tus finanzas. </div>
+      <ul>
+        <li><img src="img/blog_1.jpg" alt=""></li>
+        <li><img src="img/blog_2.jpg" alt=""></li>
+        <li><img src="img/blog_3.jpg" alt=""></li>
+        <li><img src="img/blog_4.jpg" alt=""></li>
+
+      </ul>   
+  </div>
   </section><!-- #hero -->
 
   <main id="main">
@@ -95,20 +111,20 @@ $fila= mysqli_fetch_array($planes);
 
             <div class="icon-box wow fadeInUp">
               <div class="icon"><i class="fa fa-shopping-bag"></i></div>
-              <h4 class="title"><a href="">Eiusmod Tempor</a></h4>
-              <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p>
+              <h4 class="title"><a href="">Calidad - Precio</a></h4>
+              <p class="description">Nos esforzamos en crear sistemas altamente capaces de realizar las tareas solicitadas por nuestros clientes, sin precios extremadamente disparados.</p>
             </div>
 
             <div class="icon-box wow fadeInUp" data-wow-delay="0.2s">
               <div class="icon"><i class="fa fa-photo"></i></div>
-              <h4 class="title"><a href="">Magni Dolores</a></h4>
-              <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+              <h4 class="title"><a href="">Diseños Intuitivos</a></h4>
+              <p class="description">Todo programa se crea cuidadosamente, insertando diseños y estructuras para un facil uso, sin dejar a un lado el desempeño profesional. </p>
             </div>
 
             <div class="icon-box wow fadeInUp" data-wow-delay="0.4s">
               <div class="icon"><i class="fa fa-bar-chart"></i></div>
-              <h4 class="title"><a href="">Dolor Sitema</a></h4>
-              <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
+              <h4 class="title"><a href="">Resultados inmediatos</a></h4>
+              <p class="description">Podra notar la efectividad de nuestros programas en su negocio mas rapido de lo que se imagina. Puede dejar todo en nuestras manos, nosotros haremos lo mejor para usted.</p>
             </div>
 
           </div>
@@ -120,242 +136,205 @@ $fila= mysqli_fetch_array($planes);
     </section><!-- #about -->
 
     <!--==========================
-      Facts Section
-    ============================-->
-    <section id="facts">
-      <div class="container wow fadeIn">
-        <div class="section-header">
-          <h3 class="section-title">Estadisticas</h3>
-          <p class="section-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
-        </div>
-        <div class="row counters">
-
-  				<div class="col-lg-3 col-6 text-center">
-            <span data-toggle="counter-up">232</span>
-            <p>Clients</p>
-  				</div>
-
-          <div class="col-lg-3 col-6 text-center">
-            <span data-toggle="counter-up">521</span>
-            <p>Projects</p>
-  				</div>
-
-          <div class="col-lg-3 col-6 text-center">
-            <span data-toggle="counter-up">1,463</span>
-            <p>Hours Of Support</p>
-  				</div>
-
-          <div class="col-lg-3 col-6 text-center">
-            <span data-toggle="counter-up">15</span>
-            <p>Hard Workers</p>
-  				</div>
-
-  			</div>
-
-      </div>
-    </section><!-- #facts -->
-
-    <!--==========================
       SECCION SERVICIOS
     ============================-->
 <section id="services">
       <div class="container wow fadeIn">
         <div class="section-header">
           <h3 class="section-title">Productos</h3>
-          <p class="section-description">Descubre nuestra variedad de productos para amenizar tu dia a dia</p>
+          <p class="section-description">Descubre nuestra variedad de productos para amenizar tu día a día</p>
         </div>
         <div class="row">
-          <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+          <div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
             <div class="box">
               <div class="icon"><a href=""><i class="fa fa-desktop"></i></a></div>
               <h4 class="title"><a href="">Cañones</a></h4>
-              <p class="description">    <?php echo $fila ['desc_plan']; ?></p>
+              <p class="description">Nos decidimos a desarrollar un sistema con el cuál podrás llevar un control sobre los apartados de Cañones, este proyecto está hecho para todo el público, pero en específico a las escuelas y empresas que cuentan con estos equipos..</p>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
+          <div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
             <div class="box">
               <div class="icon"><a href=""><i class="fa fa-bar-chart"></i></a></div>
-              <h4 class="title"><a href="">Tandas</a></h4>
-              <p class="description">    <?php echo $fila ['nombre_plan']; ?></p>
+              <h4 class="title"><a href="">Dámda</a></h4>
+              <p class="description">A veces se nos complica el ahorro de dinero y se nos es muy difícil buscar una manera para hacerlo, por lo que ofrecemos este gran sistema con el cuál tu podrás organizar tus propias tandas entre familiares o amigos, tú decides la duración y monto. "Tandeando tu futuro".</p>
             </div>
-          </div>
-          <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
-            <div class="box">
-              <div class="icon"><a href=""><i class="fa fa-bar-chart"></i></a></div>
-              <h4 class="title"><a href="">Pagos</a></h4>
-              <p class="description">Este sistema creado para que puedas realisar los pagos de tus diferentes diligencias, gracias a su facil uso quedaras enamorado de el.</p>
-            </div>
-          </div>
-          
+          </div>          
 
       </div>
     </section><!-- #services -->
 
     <!--==========================
-    Call To Action Section
+      SECCION PROMOS
+    ============================-->
+    <div id="pricing" class="section pricing-section">
+      <div class="container">
+        <div class="section-header">         
+          <h2 class="section-title">Paquetes y Promociones</h2>
+            <p class="section-description">Contamos con distintos paquetes y promociones para cubrir tus necesidades</p>
+        </div>
+
+        <div class="row pricing-tables">
+          <div class="col-lg-4 col-md-4 col-xs-12">
+            <div class="pricing-table">
+              <div class="pricing-details">
+                <div class="icon">
+                  <i class="lni-rocket"></i>
+                </div>
+                <h2>Trial</h2>
+                <ul>
+                  <li>prueba TODAS las funciones de nuestro sistema durante ¡15 dias!</li>
+
+                </ul>
+
+              </div>
+
+              <div class="price">FREE<span>/mo</span></div>
+
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-4 col-xs-12">
+            <div class="pricing-table pricing-active">
+              <div class="pricing-details">
+                <div class="icon">
+                  <i class="lni-drop"></i>
+                </div>
+                <h2>Basico</h2>
+                <ul>
+                  <li>7 Gastos por mes</li>
+                  <li>3 Ingresos por mes </li>
+                  <li>5 Categorias diferentes</li>
+                  <li>!Cuida tu economia¡</li>
+
+                </ul>
+                
+              </div>
+              
+               <div class="price">
+               <?php                
+               if (empty($decon) ) {
+                  $PrecioF=300;
+                  ?>
+                  $<?php echo$PrecioF ?><span>/mo</span>
+                  <?php
+                }
+
+                else{
+
+                  ?>
+                  <strike>$300<span>/mo</span></strike> <br>
+                  <?php
+                  $PrecioF=300 * ((100-$decon)/100);
+
+                  ?>$<?php echo$PrecioF?><span>/mo</span>
+                <?php
+                }
+                ?>
+                </div>
+
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-4 col-xs-12">
+            <div class="pricing-table">
+              <div class="pricing-details">
+                <div class="icon">
+                  <i class="lni-briefcase"></i>
+                </div>
+                <h2>Premium</h2>
+                <ul>
+                  <li>Registros Ilimitados de gastos</li>
+                  <li>Ingresos ilimitados </li>
+                  <li>Categorias ilimitadas</li>
+                  <li>!Cuida tu economia¡</li>
+
+                </ul>
+                
+              </div>
+
+              <div class="price">
+               <?php                
+               if (empty($decon) ) {
+                  $PrecioF=600;
+                  ?>
+                  $<?php echo$PrecioF ?><span>/mo</span>
+                  <?php
+                }
+
+                else{
+
+                  ?>
+                  <strike>$600<span>/mo</span></strike> <br>
+                  <?php
+                  $PrecioF=600 * ((100-$decon)/100);
+
+                  ?>$<?php echo$PrecioF?><span>/mo</span>
+                <?php
+                }
+                ?>
+                </div>
+          </div>
+          <!--popup-->
+          <div class="contenedor">
+            <button class="btn-abrir-popup" id="btn-abrir-popup">Comprar</button>
+
+            <div class="overlay" id="overlay">
+			        <div class="popup" id="popup">
+				        <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"><i class="fa fa-times"></i></a>
+				          <h3>SUSCRIBETE</h3>
+				          <h4>y forma parte de esta gran familia</h4>
+				            <form action="Vplanes.php" method="POST">
+					           <div class="contenedor-inputs">
+						          <input type="text" id="nombre" name="nombre" placeholder="Nombre">
+                      <input type="email" id="email" name="email" placeholder="Correo">
+                      <input type="password" id="password" name="password" placeholder="Contraseña">
+                      <select name="plan" id="plan">
+                        <option value="0">Seleccione un plan</option>
+                        <?php
+                        while($fila = mysqli_fetch_array($planes)){
+                        ?>
+
+                        <option value="<?php echo $fila['id_plan'] ?>"> <?php echo $fila['nombre_plan'] ?></option>
+
+                        <?php 
+                          }
+                         ?> 
+
+                      </select>
+				    	        </div>
+				    	        <input type="submit" class="btn-submit" value="Suscribirse">
+				            </form>
+			        </div>
+		        </div>
+
+          </div>
+          <!--fin popup-->
+        </div>
+      </div>
+    </div>
+    <!-- End Pricing Table Section -->
+
+        <!--==========================
+    seccion codigo promos
     ============================-->
     <section id="call-to-action">
       <div class="container wow fadeIn">
         <div class="row">
           <div class="col-lg-9 text-center text-lg-left">
-            <h3 class="cta-title">Call To Action</h3>
-            <p class="cta-text"> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <h3 class="cta-title">Promociones</h3>
+            <p class="cta-text"> Ingresa tu codigo de promocion para obtener Grandes Beneficios </p>
           </div>
+
           <div class="col-lg-3 cta-btn-container text-center">
-            <a class="cta-btn align-middle" href="#">Call To Action</a>
+            <a class="cta-btn align-middle" href="#">Validar</a>
+          </div>
+          <div>
+          <input type="text" id="promo" name="promo" placeholder="Codigo">
           </div>
         </div>
 
       </div>
-    </section><!-- #call-to-action -->
-
-    <!--==========================
-      Portfolio Section
-    ============================-->
-    <section id="portfolio">
-      <div class="container wow fadeInUp">
-        <div class="section-header">
-          <h3 class="section-title">Portfolio</h3>
-          <p class="section-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
-        </div>
-        <div class="row">
-
-          <div class="col-lg-12">
-            <ul id="portfolio-flters">
-              <li data-filter=".filter-app, .filter-card, .filter-logo, .filter-web" class="filter-active">All</li>
-              <li data-filter=".filter-app">App</li>
-              <li data-filter=".filter-card">Card</li>
-              <li data-filter=".filter-logo">Logo</li>
-              <li data-filter=".filter-web">Web</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="row" id="portfolio-wrapper">
-          <div class="col-lg-3 col-md-6 portfolio-item filter-app">
-            <a href="">
-              <img src="img/portfolio/app1.jpg" alt="">
-              <div class="details">
-                <h4>App 1</h4>
-                <span>Alored dono par</span>
-              </div>
-            </a>
-          </div>
-
-          <div class="col-lg-3 col-md-6 portfolio-item filter-web">
-            <a href="">
-              <img src="img/portfolio/web2.jpg" alt="">
-              <div class="details">
-                <h4>Web 2</h4>
-                <span>Alored dono par</span>
-              </div>
-            </a>
-          </div>
-
-          <div class="col-lg-3 col-md-6 portfolio-item filter-app">
-            <a href="">
-              <img src="img/portfolio/app3.jpg" alt="">
-              <div class="details">
-                <h4>App 3</h4>
-                <span>Alored dono par</span>
-              </div>
-            </a>
-          </div>
-
-          <div class="col-lg-3 col-md-6 portfolio-item filter-card">
-            <a href="">
-              <img src="img/portfolio/card1.jpg" alt="">
-              <div class="details">
-                <h4>Card 1</h4>
-                <span>Alored dono par</span>
-              </div>
-            </a>
-          </div>
-
-          <div class="col-lg-3 col-md-6 portfolio-item filter-card">
-            <a href="">
-              <img src="img/portfolio/card2.jpg" alt="">
-              <div class="details">
-                <h4>Card 2</h4>
-                <span>Alored dono par</span>
-              </div>
-            </a>
-          </div>
-
-          <div class="col-lg-3 col-md-6 portfolio-item filter-web">
-            <a href="">
-              <img src="img/portfolio/web3.jpg" alt="">
-              <div class="details">
-                <h4>Web 3</h4>
-                <span>Alored dono par</span>
-              </div>
-            </a>
-          </div>
-
-          <div class="col-lg-3 col-md-6 portfolio-item filter-card">
-            <a href="">
-              <img src="img/portfolio/card3.jpg" alt="">
-              <div class="details">
-                <h4>Card 3</h4>
-                <span>Alored dono par</span>
-              </div>
-            </a>
-          </div>
-
-          <div class="col-lg-3 col-md-6 portfolio-item filter-app">
-            <a href="">
-              <img src="img/portfolio/app2.jpg" alt="">
-              <div class="details">
-                <h4>App 2</h4>
-                <span>Alored dono par</span>
-              </div>
-            </a>
-          </div>
-
-          <div class="col-lg-3 col-md-6 portfolio-item filter-logo">
-            <a href="">
-              <img src="img/portfolio/logo1.jpg" alt="">
-              <div class="details">
-                <h4>Logo 1</h4>
-                <span>Alored dono par</span>
-              </div>
-            </a>
-          </div>
-
-          <div class="col-lg-3 col-md-6 portfolio-item filter-logo">
-            <a href="">
-              <img src="img/portfolio/logo3.jpg" alt="">
-              <div class="details">
-                <h4>Logo 3</h4>
-                <span>Alored dono par</span>
-              </div>
-            </a>
-          </div>
-
-          <div class="col-lg-3 col-md-6 portfolio-item filter-web">
-            <a href="">
-              <img src="img/portfolio/web1.jpg" alt="">
-              <div class="details">
-                <h4>Web 1</h4>
-                <span>Alored dono par</span>
-              </div>
-            </a>
-          </div>
-
-          <div class="col-lg-3 col-md-6 portfolio-item filter-logo">
-            <a href="">
-              <img src="img/portfolio/logo2.jpg" alt="">
-              <div class="details">
-                <h4>Logo 2</h4>
-                <span>Alored dono par</span>
-              </div>
-            </a>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- #portfolio -->
+    </section><!-- #seccion codigo promoss -->
 
     <!--==========================
       SECCION EQUIPO
@@ -428,7 +407,7 @@ $fila= mysqli_fetch_array($planes);
     </section><!-- #team -->
 
     <!--==========================
-      Contact Section
+      SECCION CONTÁCTO
     ============================-->
     <section id="contact">
       <div class="container wow fadeInUp">
@@ -449,7 +428,7 @@ $fila= mysqli_fetch_array($planes);
             <div class="info">
               <div>
                 <i class="fa fa-map-marker"></i>
-                <p>A108 Adam Street<br>New York, NY 535022</p>
+                <p>Avenida Rodrigo Gómez Manzana 9<br>Lote 1-15, 38, 77507 Cancún, Q.R.</p>
               </div>
 
               <div>
@@ -479,19 +458,19 @@ $fila= mysqli_fetch_array($planes);
               <div id="errormessage"></div>
               <form action="" method="post" role="form" class="contactForm">
                 <div class="form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Nombre" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Nombre" data-rule="minlen:4" data-msg="Porfavor ingrese su nombre" />
                   <div class="validation"></div>
                 </div>
                 <div class="form-group">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Correo Electrónico" data-rule="email" data-msg="Please enter a valid email" />
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Correo Electrónico" data-rule="email" data-msg="Porfavor ingrese un E-Mail Valido" />
                   <div class="validation"></div>
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Asunto" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Asunto" data-rule="minlen:4" data-msg="Porfavor ingrese un asunto al correo" />
                   <div class="validation"></div>
                 </div>
                 <div class="form-group">
-                  <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Mensaje"></textarea>
+                  <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Porfavor ingrese su mensaje" placeholder="Mensaje"></textarea>
                   <div class="validation"></div>
                 </div>
                 <div class="text-center"><button type="submit">Enviar Mensaje</button></div>
@@ -507,7 +486,7 @@ $fila= mysqli_fetch_array($planes);
   </main>
 
   <!--==========================
-    Footer
+    SECCION FOOTER
   ============================-->
   <footer id="footer">
     <div class="footer-top">
