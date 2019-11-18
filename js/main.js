@@ -142,21 +142,5 @@ btnCerrarPopup.addEventListener('click', function(e){
 	popup.classList.remove('active');
 });
 
-$(document).ready(function(){
-  $('from').submit(function(e){
-    e.preventDefault();
-    var data =$(this).serializeArray();
-
-    $.ajax({
-      url:'Vplanes.php',
-      type:'post',
-      dataType:'json',
-      data:data
-    })
-
-
-
-  })
-})
 
 });
