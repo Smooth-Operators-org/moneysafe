@@ -147,26 +147,26 @@ $decon = $fil2['porcentaje'];
 
           <div class="col-lg-6 content order-lg-1 order-2">
             <h2 class="title">Un equipo fuerte con una sólida formación.</h2>
-            <p>
+            <p align="justify">
               Decidí­mos Triunfar es el lema que nos ha acompañado durante mucho tiempo, en todo lo que estamos haciendo en nuestra vida, tanto a nivel personal como profesional. Desde el día que tomamos esta frase como lema, todo empezó a cambiar en la vida. Solo una actitud positiva ante todos los retos que como adulto hemos tenido que enfrentar ha hecho posible salir adelante en forma exitosa. Te invito a que también hagas tuyo este lema y triunfes en todos los retos que se presenten en tu vida.
             </p>
 
             <div class="icon-box wow fadeInUp">
               <div class="icon"><i class="fa fa-shopping-bag"></i></div>
               <h4 class="title"><a href="">Calidad - Precio</a></h4>
-              <p class="description">Nos esforzamos en crear sistemas altamente capaces de realizar las tareas solicitadas por nuestros clientes, sin precios extremadamente disparados.</p>
+              <p class="description" align="justify">Nos esforzamos en crear sistemas altamente capaces de realizar las tareas solicitadas por nuestros clientes, sin precios extremadamente disparados.</p>
             </div>
 
             <div class="icon-box wow fadeInUp" data-wow-delay="0.2s">
               <div class="icon"><i class="fa fa-photo"></i></div>
               <h4 class="title"><a href="">Diseños Intuitivos</a></h4>
-              <p class="description">Todo programa se crea cuidadosamente, insertando diseños y estructuras para un facil uso, sin dejar a un lado el desempeño profesional. </p>
+              <p class="description" align="justify">Todo programa se crea cuidadosamente, insertando diseños y estructuras para un facil uso, sin dejar a un lado el desempeño profesional. </p>
             </div>
 
             <div class="icon-box wow fadeInUp" data-wow-delay="0.4s">
               <div class="icon"><i class="fa fa-bar-chart"></i></div>
               <h4 class="title"><a href="">Resultados inmediatos</a></h4>
-              <p class="description">Podra notar la efectividad de nuestros programas en su negocio mas rapido de lo que se imagina. Puede dejar todo en nuestras manos, nosotros haremos lo mejor para usted.</p>
+              <p class="description" align="justify">Podra notar la efectividad de nuestros programas en su negocio mas rapido de lo que se imagina. Puede dejar todo en nuestras manos, nosotros haremos lo mejor para usted.</p>
             </div>
 
           </div>
@@ -184,21 +184,21 @@ $decon = $fil2['porcentaje'];
       <div class="container wow fadeIn">
         <div class="section-header">
           <h3 class="section-title">Productos</h3>
-          <p class="section-description">Descubre nuestra variedad de productos para amenizar tu día a día</p>
+          <p class="section-description">Descubre nuestra variedad de productos para amenizar tu día a día.</p>
         </div>
         <div class="row">
           <div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
             <div class="box">
               <div class="icon"><a href=""><i class="fa fa-desktop"></i></a></div>
               <h4 class="title"><a href="">Cañones</a></h4>
-              <p class="description">Nos decidimos a desarrollar un sistema con el cuál podrás llevar un control sobre los apartados de Cañones, este proyecto está hecho para todo el público, pero en específico a las escuelas y empresas que cuentan con estos equipos..</p>
+              <p class="description" align="justify">Nos decidimos a desarrollar un sistema con el cuál podrás llevar un control sobre los apartados de Cañones, este proyecto está hecho para todo el público, pero en específico a las escuelas y empresas que cuentan con estos equipos..</p>
             </div>
           </div>
           <div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
             <div class="box">
               <div class="icon"><a href=""><i class="fa fa-bar-chart"></i></a></div>
               <h4 class="title"><a href="">Dámda</a></h4>
-              <p class="description">A veces se nos complica el ahorro de dinero y se nos es muy difícil buscar una manera para hacerlo, por lo que ofrecemos este gran sistema con el cuál tu podrás organizar tus propias tandas entre familiares o amigos, tú decides la duración y monto. "Tandeando tu futuro".</p>
+              <p class="description" align="justify">A veces se nos complica el ahorro de dinero y se nos es muy difícil buscar una manera para hacerlo, por lo que ofrecemos este gran sistema con el cuál tu podrás organizar tus propias tandas entre familiares o amigos, tú decides la duración y monto. "Tandeando tu futuro".</p>
             </div>
           </div>
          <!-- <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
@@ -238,7 +238,7 @@ $decon = $fil2['porcentaje'];
 
               </div>
 
-              <div class="price">FREE<span>/mo</span></div>
+              <div class="price">Gratis<span>/Por 15 días.</span></div>
 
             </div>
           </div>
@@ -249,12 +249,11 @@ $decon = $fil2['porcentaje'];
                 <div class="icon">
                   <i class="lni-drop"></i>
                 </div>
-                <h2>Basico</h2>
+                <h2>Básico</h2>
                 <ul>
                   <li>7 Gastos por mes</li>
                   <li>3 Ingresos por mes </li>
                   <li>5 Categorias diferentes</li>
-                  <li>!Cuida tu economia¡</li>
 
                 </ul>
                 
@@ -265,7 +264,7 @@ $decon = $fil2['porcentaje'];
                if (empty($decon) ) {
                   $PrecioF=300;
                   ?>
-                  $<?php echo$PrecioF ?><span>/mo</span>
+                  $<?php echo$PrecioF ?><span>/Mensuales</span>
                   <?php
                 }
 
@@ -276,7 +275,7 @@ $decon = $fil2['porcentaje'];
                   <?php
                   $PrecioF=300 * ((100-$decon)/100);
 
-                  ?>$<?php echo$PrecioF?><span>/mo</span>
+                  ?>$<?php echo$PrecioF?><span>/Mensuales</span>
                 <?php
                 }
                 ?>
@@ -296,7 +295,6 @@ $decon = $fil2['porcentaje'];
                   <li>Registros Ilimitados de gastos</li>
                   <li>Ingresos ilimitados </li>
                   <li>Categorias ilimitadas</li>
-                  <li>!Cuida tu economia¡</li>
 
                 </ul>
                 
@@ -307,7 +305,7 @@ $decon = $fil2['porcentaje'];
                if (empty($decon) ) {
                   $PrecioF=600;
                   ?>
-                  $<?php echo$PrecioF ?><span>/mo</span>
+                  $<?php echo$PrecioF ?><span>/Mensuales</span>
                   <?php
                 }
 
@@ -318,7 +316,7 @@ $decon = $fil2['porcentaje'];
                   <?php
                   $PrecioF=600 * ((100-$decon)/100);
 
-                  ?>$<?php echo$PrecioF?><span>/mo</span>
+                  ?>$<?php echo$PrecioF?><span>/Mensuales</span>
                 <?php
                 }
                 ?>
@@ -337,7 +335,7 @@ $decon = $fil2['porcentaje'];
               <div class="popup" id="popup">
                 <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"><i class="fa fa-times"></i></a>
                   <h3>SUSCRIBETE</h3>
-                  <h4>y forma parte de esta gran familia</h4>
+                  <h4>Y forma parte de esta gran familia.</h4>
                     <form action="Vplanes.php" method="POST">
                      <div class="contenedor-inputs">
                       <input type="text" id="nombre" name="nombre" placeholder="Nombre">
@@ -374,14 +372,18 @@ $decon = $fil2['porcentaje'];
           <div class="col-lg-9 text-center text-lg-left">
           <form action="vpromo.php" method="post">
             <h3 class="cta-title">Promociones</h3>
-            <p class="cta-text"> Ingresa tu codigo de promocion para obtener Grandes Beneficios </p>
+            <p class="cta-text"> Ingresa un código de promoción para obtener grandes beneficios! </p>
           </div>
 
           <div class="col-lg-3 cta-btn-container text-center">
            <input type="submit" class="cta-btn align-middle" value="validar">
           </div>
           <div>
+          <center>
           <input type="text" id="promo" name="promo" placeholder="Codigo">
+          </center>
+
+
 
           
 
@@ -398,7 +400,7 @@ $decon = $fil2['porcentaje'];
     <section id="team">
       <div class="container wow fadeInUp">
         <div class="section-header">
-          <h3 class="section-title">Equípo</h3>
+          <h3 class="section-title">Equipo</h3>
           <p class="section-description">Contamos con un equipo altamente especializado detrás del desarrollo de cada sistema.</p>
         </div>
         <div class="row">
@@ -420,7 +422,7 @@ $decon = $fil2['porcentaje'];
             <div class="member">
               <div class="pic"><img src="img/team-2.jpg" alt=""></div>
               <h4>Ojeda Hernández</h4>
-              <span>Desarrollador BackEnd</span>
+              <span>Diseñador Web</span>
               <div class="social">
                 <a href=""><i class="fa fa-twitter"></i></a>
                 <a href=""><i class="fa fa-facebook"></i></a>
@@ -434,7 +436,7 @@ $decon = $fil2['porcentaje'];
             <div class="member">
               <div class="pic"><img src="img/team-3.jpg" alt=""></div>
               <h4>Carlos Maldonado</h4>
-              <span>Socio Ejecutivo</span>
+              <span>Diseñador Web</span>
               <div class="social">
                 <a href=""><i class="fa fa-twitter"></i></a>
                 <a href=""><i class="fa fa-facebook"></i></a>
@@ -448,7 +450,7 @@ $decon = $fil2['porcentaje'];
             <div class="member">
               <div class="pic"><img src="img/team-4.jpg" alt=""></div>
               <h4>Moises Caamal</h4>
-              <span>Programador de BD</span>
+              <span>Diseñador Web</span>
               <div class="social">
                 <a href=""><i class="fa fa-twitter"></i></a>
                 <a href=""><i class="fa fa-facebook"></i></a>
@@ -489,12 +491,12 @@ $decon = $fil2['porcentaje'];
 
               <div>
                 <i class="fa fa-envelope"></i>
-                <p><a href=unid.edu.mx@hotmail.com>unid.edu.mx@hotmail.com</a></p>
+                <p><a href=mailto:unid.edu.mx@hotmail.com>unid.edu.mx@hotmail.com</a></p>
               </div>
 
               <div>
                 <i class="fa fa-phone"></i>
-                <p><a href="tel:889-46-03">998-889-9520</a></p>
+                <p><a href="tel:998-889-9520">998-889-9520</a></p>
               </div>
             </div>
 
