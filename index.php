@@ -8,8 +8,11 @@ require_once 'includes/database.php';
 $consulta = "SELECT * FROM planes";
 $planes =mysqli_query($conectar, $consulta);
 
+$consulA="SELECT * FROM aplicaciones";
+$app=mysqli_query($conectar,$consulA);
 
-$consulp="SELECT * FROM promos";
+
+/*$consulp="SELECT * FROM promos";
 $promos=mysqli_query($conectar, $consulp);
 
 while($fil2=mysqli_fetch_array($promos)){
@@ -19,7 +22,7 @@ $decon = $fil2['porcentaje'];
 
 }
 
-}; 
+}; */
               
 ?>
 
@@ -186,31 +189,22 @@ $decon = $fil2['porcentaje'];
           <h3 class="section-title">Productos</h3>
           <p class="section-description">Descubre nuestra variedad de productos para amenizar tu día a día.</p>
         </div>
+
+        
         <div class="row">
-          <div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+        <?php while ($appli=mysqli_fetch_array($app)){?>
+          <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
             <div class="box">
               <div class="icon"><a href=""><i class="fa fa-desktop"></i></a></div>
-              <h4 class="title"><a href="">Cañones</a></h4>
-              <p class="description" align="justify">Nos decidimos a desarrollar un sistema con el cuál podrás llevar un control sobre los apartados de Cañones, este proyecto está hecho para todo el público, pero en específico a las escuelas y empresas que cuentan con estos equipos..</p>
+              <h4 class="title"><a href=""><?php echo $appli['nombre_app'] ?></a></h4>
+              <p class="description" align="justify"><?php echo $appli['descripcion_app'] ?></p>
             </div>
           </div>
-          <div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
-            <div class="box">
-              <div class="icon"><a href=""><i class="fa fa-bar-chart"></i></a></div>
-              <h4 class="title"><a href="">Dámda</a></h4>
-              <p class="description" align="justify">A veces se nos complica el ahorro de dinero y se nos es muy difícil buscar una manera para hacerlo, por lo que ofrecemos este gran sistema con el cuál tu podrás organizar tus propias tandas entre familiares o amigos, tú decides la duración y monto. "Tandeando tu futuro".</p>
-            </div>
-          </div>
-         <!-- <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
-            <div class="box">
-              <div class="icon"><a href=""><i class="fa fa-bar-chart"></i></a></div>
-              <h4 class="title"><a href="">Pagos</a></h4>
-              <p class="description">Podras realisar pagos de diferentes diligencias, gracias a su facil uso quedaras enamorado de el.</p>
-            </div>
-          </div>-->
-          
 
-      </div>
+                
+          <?php } ?> 
+        </div>
+    
     </section><!-- #services -->
 
     <!--==========================
@@ -222,107 +216,30 @@ $decon = $fil2['porcentaje'];
           <h2 class="section-title">Paquetes y Promociones</h2>
             <p class="section-description">Contamos con distintos paquetes y promociones para cubrir tus necesidades</p>
         </div>
-
         <div class="row pricing-tables">
+
+        <?php while ($pla=mysqli_fetch_array($planes)){?>
           <div class="col-lg-4 col-md-4 col-xs-12">
             <div class="pricing-table">
               <div class="pricing-details">
                 <div class="icon">
                   <i class="lni-rocket"></i>
                 </div>
-                <h2>Trial</h2>
+                <h2><?php echo $pla['nombre_plan'] ?></h2>
                 <ul>
-                  <li>Prueba todas las funciones de nuestro sistema durante ¡15 dias!</li>
+                  <li align="justify"><?php echo $pla['Descripcion_plan'] ?></li>
 
                 </ul>
 
               </div>
 
-              <div class="price">Gratis<span>/Por 15 días.</span></div>
-
+              <div class="price" ><h5>$<?php echo$pla['costo_plan'] ?><span>/mo.</span></h5></div>
             </div>
+          
           </div>
-
-          <div class="col-lg-4 col-md-4 col-xs-12">
-            <div class="pricing-table pricing-active">
-              <div class="pricing-details">
-                <div class="icon">
-                  <i class="lni-drop"></i>
-                </div>
-                <h2>Básico</h2>
-                <ul>
-                  <li>7 Gastos por mes</li>
-                  <li>3 Ingresos por mes </li>
-                  <li>5 Categorias diferentes</li>
-
-                </ul>
-                
-              </div>
-              
-               <div class="price">
-               <?php                
-               if (empty($decon) ) {
-                  $PrecioF=300;
-                  ?>
-                  $<?php echo$PrecioF ?><span>/Mensuales</span>
-                  <?php
-                }
-
-                else{
-
-                  ?>
-                  <strike>$300<span>/mo</span></strike> <br>
-                  <?php
-                  $PrecioF=300 * ((100-$decon)/100);
-
-                  ?>$<?php echo$PrecioF?><span>/Mensuales</span>
-                <?php
-                }
-                ?>
-                </div>
-
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-4 col-xs-12">
-            <div class="pricing-table">
-              <div class="pricing-details">
-                <div class="icon">
-                  <i class="lni-briefcase"></i>
-                </div>
-                <h2>Premium</h2>
-                <ul>
-                  <li>Registros Ilimitados de gastos</li>
-                  <li>Ingresos ilimitados </li>
-                  <li>Categorias ilimitadas</li>
-
-                </ul>
-                
-              </div>
-
-              <div class="price">
-               <?php                
-               if (empty($decon) ) {
-                  $PrecioF=600;
-                  ?>
-                  $<?php echo$PrecioF ?><span>/Mensuales</span>
-                  <?php
-                }
-
-                else{
-
-                  ?>
-                  <strike>$600<span>/mo</span></strike> <br>
-                  <?php
-                  $PrecioF=600 * ((100-$decon)/100);
-
-                  ?>$<?php echo$PrecioF?><span>/Mensuales</span>
-                <?php
-                }
-                ?>
-                </div>
-          </div>
+          <?php }?>
         </div>
+
       </div>
     </div>
     <!-- End Pricing Table Section -->
