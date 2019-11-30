@@ -11,11 +11,69 @@
   <link href="css/estilos.css" rel="stylesheet">
 </head>
 <body>
- <?php require_once("includes/navbar.php");   ?>
+  <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">ActiveBox</a>
+    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+    <ul class="navbar-nav px-3">
+      <li class="nav-item text-nowrap">
+        <a class="nav-link" href="#">Sign out</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="container-fluid">
+    <div class="row">
+      <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+        <div class="sidebar-sticky">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">
+                <span data-feather="home"></span>
+                Usuarios <span class="sr-only">(current)</span>
+              </a>
+            </li>
+             <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span data-feather="file"></span>
+                Main
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span data-feather="file"></span>
+                Features
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span data-feather="shopping-cart"></span>
+                Works
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span data-feather="users"></span>
+                OurTeam
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span data-feather="bar-chart-2"></span>
+                Testimonials
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span data-feather="layers"></span>
+                Downloads
+              </a>
+            </li>
+        </div>
+      </nav>
 
       <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4" id="main">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-          <h1 class="h2">Usuarios</h1>
+          <h1 class="h2">Dashboard</h1>
           <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group mr-2">
               <button type="button" class="btn btn-sm btn-outline-danger cancelar">Cancelar</button>
@@ -30,7 +88,7 @@
               <tr>
                 <th>Nombre</th>
                 <th>Teléfono</th>
-
+                <th>Acciones</th>
               </tr>
             </thead>
             <tbody></tbody>
@@ -44,20 +102,20 @@
                   <label for="nombre">Nombre</label>
                   <input type="text" id="nombre" name="nombre" class="form-control">
                 </div>
-                <div class="col">
+                <div class="form-group">
+                  <label for="correo">Correo Electrónico</label>
+                  <input type="email" id="correo" name="correo" class="form-control">
+                </div>
+              </div>
+              <div class="col">
                 <div class="form-group">
                   <label for="telefono">Teléfono</label>
-                  <input type="text" id="telefono" name="telefono" class="form-control">
+                  <input type="tel" id="telefono" name="telefono" class="form-control">
                 </div>
-                <div class="col">
                 <div class="form-group">
-                  <label for="telefono">Puesto</label>
-                  <input type="text" id="puesto" name="puesto" class="form-control">
+                  <label for="password">Contraseña</label>
+                  <input type="password" id="password" name="password" class="form-control">
                 </div>
-
-              </div>
-
-
               </div>
             </div>
             <div class="row">
@@ -75,7 +133,6 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
   <script>
-    //muestra que vista (guardar o regirtrar) es visible
     function change_view(vista = 'show_data'){
       $("#main").find(".view").each(function(){
         // $(this).addClass("d-none");
@@ -89,20 +146,19 @@
 
     }
     function consultar(){
-         let obj = {
-        "accion" : "consultar_usuarios"  
+      let obj = {
+        "accion" : "consultar_usuarios"
       };
-      
       $.post("includes/_funciones.php", obj, function(respuesta){
         let template = ``;
         $.each(respuesta,function(i,e){
           template += `
           <tr>
-          <td>${e.nombre_app}</td>
-          <td>${e.descripcion_app}</td>
+          <td>${e.nombre_usr}</td>
+          <td>${e.telefono_usr}</td>
           <td>
-          <a href="#" data-id="${e.id_aplicaciones}" class="editar_registro">Editar</a>
-          <a href="#" data-id="${e.id_aplicaciones}" class="eliminar_registro">Eliminar</a>
+          <a href="#" data-id="${e.id_usr}" class="editar_registro">Editar</a>
+          <a href="#" data-id="${e.id_usr}" class="eliminar_registro">Eliminar</a>
           </td>
           </tr>
           `;
@@ -118,18 +174,20 @@
       change_view('insert_data');
     });
 
-    $("#guardar_datos").click(function(){
-      let nombre = $('#nombre').val();
-      let correo = $('#correo').val();
-      let telefono = $('#telefono').val();
-      let password = $('#password').val();
+    $("#guardar_datos").click(function(guardar){
+     // Funcion para guardar Datos
+      let nombre = $("#nombre").val();
+      let correo = $("#correo").val();
+      let telefono = $("#telefono").val();
+      let password = $("#password").val();
+      // Inicializar el objetos
       let obj ={
         "accion" : "insertar_usuarios",
         "nombre" : nombre,
         "correo" : correo,
-        "telefono" : telefono,
-        "password" : password
-      };
+        "password" : password,
+        "telefono" : telefono
+      }
       $("#form_data").find("input").each(function(){
         $(this).removeClass("has-error");
         if($(this).val() != ""){
@@ -139,25 +197,25 @@
           return false;
         }
       });
-      if($(this).data("editar") == 1){
-        obj["accion"] = "editar_usuarios";
-        obj["id"] = $(this).data("id");
-        $(this).text("Guardar").data("editar",0);
-        $("#form_data")[0].reset();
-      }
-      $.post("includes/_funciones.php", obj, function(respuesta){
-          alert(respuesta);
-        if (respuesta == "Se inserto el usuario en la BD ") {
-          change_view();
-          consultar();
-         }
-        if (respuesta == "Se edito el usuario correctamente") {
-            change_view();
-            consultar();
-          }
-      });
-      });
-//eliminar usuarios
+      $.post("includes/_funciones.php", obj, function(verificado){ 
+      if (verificado != "" ) {
+       alert("Usuario Registrado");
+        }
+      else {
+        alert("Usuario NO Registrado");
+      } 
+     }
+     );
+    });
+    
+    /*tarea para miercoles
+    cuando seleccione editar
+    cambiar la vista 
+    obtener el id del registro
+    consultar la base de datos el id
+    responder un json del registro
+    */
+
     $("#main").on("click",".eliminar_registro" , function(e){
       e.preventDefault();
       let confirmacion= confirm("Desea eliminar este registro");
@@ -165,7 +223,7 @@
         let id=$(this).data('id'),
             obj ={
               "accion":"eliminar_registro",
-              "id":id
+              "registro":id
             };
             $.post("includes/_funciones.php", obj, function(respuesta){
               alert(respuesta);
@@ -180,35 +238,9 @@
 
     });
 
-
-//editar registro
-$('#list-usuarios').on("click",".editar_registro", function(e){
-        e.preventDefault();
-        let id = $(this).data('id'),
-            obj = {
-              "accion" : "editar_registro",
-              "id" : id
-            };
-        $("#form_data")[0].reset();
-        change_view('insert_data');
-        $("#guardar_datos").text("Editar").data("editar",1).data("id",id);
-        $.post("includes/_funciones.php", obj, function(r){
-          $("#nombre").val(r.nombre_app);
-          $("#correo").val(r.descripcion_app);
-          $("#telefono").val(r.img_app);
-          
-        }, "JSON");
-            
-      });
-
-
-        $("#main").find(".cancelar").click(function(){
+    $("#main").find(".cancelar").click(function(){
       change_view();
       $("#form_data")[0].reset();
-      if ($("#guardar_datos").data("editar") == 1) {
-        $("#guardar_datos").text("Guardar").data("editar",0);
-              
-      }
     });
   </script>
 </body>
