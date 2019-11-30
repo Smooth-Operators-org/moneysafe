@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -12,11 +11,11 @@
   <link href="css/estilos.css" rel="stylesheet">
 </head>
 <body>
-  <?php require_once("includes/navbar.php");?>
+ <?php require_once("includes/navbar.php");   ?>
 
       <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4" id="main">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-          <h1 class="h2">Our Team</h1>
+          <h1 class="h2">dowloads</h1>
           <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group mr-2">
               <button type="button" class="btn btn-sm btn-outline-danger cancelar">Cancelar</button>
@@ -24,14 +23,13 @@
             </div>
           </div>
         </div>
-        <h2>Our Team</h2>
+        <h2>dowloads</h2>
         <div class="table-responsive view" id="show_data">
-          <table class="table table-striped table-sm" id="list-ourteam">
+          <table class="table table-striped table-sm" id="list-dowloads">
             <thead>
               <tr>
-                <th>Ruta Imagen</th>
-                <th>Nombre</th>
-                <th>Cargo</th>
+                <th>Titulo</th>
+                <th>Subtitulo</th>
                 <th>Acciones</th>
               </tr>
             </thead>
@@ -39,25 +37,27 @@
           </table>
         </div>
         <div id="insert_data" class="view">
-          <form action="#" id="form_data">
+            <form action="#" id="form_data" enctype="multipart/form_data">
             <div class="row">
               <div class="col">
                 <div class="form-group">
-                  <label for="imagen">Ruta Imagen</label>
-                  <input type="text" id="imagen" name="imagen" class="form-control">
+                  <label for="nombre">Titulo</label>
+                  <input type="text" id="titulo" name="titulo" class="form-control">
                 </div>
                 <div class="form-group">
-                  <label for="nombre">Nombre</label>
-                  <input type="text" id="nombre" name="nombre" class="form-control">
+                  <label for="subtitulo">Subtitulo</label>
+                  <input type="text" id="subtitulo" name="subtitulo" class="form-control">
                 </div>
               </div>
               <div class="col">
-                <div class="form-group">
-                  <label for="cargo">Cargo</label>
-                  <input type="text" id="cargo" name="cargo" class="form-control">
-                </div>
               </div>
             </div>
+            <div class="form-group">
+                  <input type="file" name="foto" id="foto">
+                  <input type="hidden" name="ruta" id="ruta" readonly="readonly">
+                </div>
+                <div id="preview"></div>
+              </div>
             <div class="row">
               <div class="col">
                 <button type="button" class="btn btn-success" id="guardar_datos">Guardar</button>
@@ -72,7 +72,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-   <script>
+  <script>
     function change_view(vista = 'show_data'){
       $("#main").find(".view").each(function(){
         // $(this).addClass("d-none");
@@ -86,24 +86,23 @@
     }
     function consultar(){
       let obj = {
-        "accion" : "consultar_ourteam"
+        "accion" : "consultar_dowloads"
       };
       $.post("includes/_funciones.php", obj, function(respuesta){
         let template = ``;
         $.each(respuesta,function(i,e){
           template += `
           <tr>
-          <td>${e.imgou}</td>
-          <td>${e.nomou}</td>
-          <td>${e.cargou}</td>
+          <td>${e.tituDo}</td>
+          <td>${e.subtituDo}</td>
           <td>
-          <a href="#" data-id="${e.idou}"class="ceditar_ourteam">Editar</a>
-          <a href="#" data-id="${e.idou}"class="eliminar_ourteam">Eliminar</a>
+          <a href="#" data-id="${e.idDo}" class="ceditar_dowloads">Editar</a>
+          <a href="#" data-id="${e.idDo}" class="eliminar_dowloads">Eliminar</a>
           </td>
           </tr>
           `;
         });
-        $("#list-ourteam tbody").html(template);
+        $("#list-dowloads tbody").html(template);
       },"JSON");
     }
     $(document).ready(function(){
@@ -113,54 +112,50 @@
     $("#nuevo_registro").click(function(){
       change_view('insert_data');
     });
-    $("#guardar_datos").click(function(guardar){
-     // Funcion para guardar Datos
-      let imagen = $("#imagen").val();
-      let nombre = $("#nombre").val();
-      let cargo = $("#cargo").val();
-      // Inicializar el objetos
+    $("#guardar_datos").click(function(){
+      let titulo = $("#titulo").val();
+      let subtitulo = $("#subtitulo").val();
       let obj ={
-        "accion" : "insertar_ourteam",
-        "imagen" : imagen,
-        "nombre" : nombre,
-        "cargo" : cargo
-      }
+        "accion" : "insertar_dowloads",
+        "titulo" : titulo,
+        "subtitulo" : subtitulo
+      };
       $("#form_data").find("input").each(function(){
         $(this).removeClass("has-error");
-        if($(this).val() != ""){
+        if($(this).val() != ""){  
           obj[$(this).prop("name")] =  $(this).val();
         }else{
           $(this).addClass("has-error").focus();
           return false;
         }
       });
-           if($(this).data("editar") == 1){
-          obj["accion"] = "editar_ourteam";
+      if($(this).data("editar") == 1){
+          obj["accion"] = "editar_dowloads";
           obj["id"] = $(this).data("id");
           $(this).text("Guardar").data("editar",0);
           $("#form_data")[0].reset();
       }
-      $.post("includes/_funciones.php", obj, function(verificado){ 
-        alert(verificado);
-       if (verificado == "Se inserto el Ourteam en la BD ") {
+      $.post("includes/_funciones.php", obj, function(respuesta){ 
+        alert(respuesta);
+       if (respuesta == "Se inserto download en la BD ") {
           change_view();
           consultar();
          }
-        if (verificado == "Se edito Ourteam correctamente") {
+        if (respuesta == "Se edito download correctamente") {
             change_view();
             consultar();
-      } 
+          } 
      }
      );
     });
 //** ELIMINAR REGISTRO **//
-$("#main").on("click",".eliminar_ourteam",function(e){
+$("#main").on("click",".eliminar_dowloads",function(e){
 e.preventDefault();
 let confirmacion = confirm("Desea eliminar esta variable");
 if(confirmacion){
 let id = $(this).data('id');
 obj = {
-  "accion" : "eliminar_ourteam",
+  "accion" : "eliminar_dowloads",
   "id" : id
 };
 $.post("includes/_funciones.php", obj, function(respuesta){
@@ -172,24 +167,23 @@ consultar();
 }
 });
 //** EDITAR **//
-    $('#list-ourteam').on("click",".ceditar_ourteam", function(e){
+    $('#list-dowloads').on("click",".ceditar_dowloads", function(e){
         e.preventDefault();
     let id = $(this).data('id');
          obj = {
-      "accion" : "ceditar_ourteam",
+      "accion" : "ceditar_dowloads",
       "id" : id
     };
     $("#form_data")[0].reset();
     change_view('insert_data');
     $("#guardar_datos").text("Editar").data("editar",1).data("id", id);
     $.post('includes/_funciones.php', obj, function(r){
-      $("#imagen").val(r.imgou);
-      $("#nombre").val(r.nomou);
-      $("#cargo").val(r.cagou);
+      $("#titulo").val(r.tituDo);
+      $("#subtitulo").val(r.subtituDo);
         }, "JSON");
         consultar();          
             });
-    ///// FUNCTION PHOTO  //////
+///// FUNCTION PHOTO  //////
     $("#foto").on("change", function (e) {
       let formDatos = new FormData($("#form_data")[0]);
       formDatos.append("accion", "carga_foto");
@@ -212,10 +206,11 @@ consultar();
         }
       });
     });
+//** CANCELAR **//
     $("#main").find(".cancelar").click(function(){
       change_view();
-      $("#form_data")[0].reset();
-            if ($("#guardar_datos").data("editar") == 1) {
+         $("#form_data")[0].reset();
+      if ($("#guardar_datos").data("editar") == 1) {
         $("#guardar_datos").text("Guardar").data("editar",0);
       }
     });
