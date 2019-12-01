@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -7,16 +6,16 @@
   <meta name="description" content="">
   <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
   <meta name="generator" content="Jekyll v3.8.5">
-  <title>Dashboard Template · Bootstrap</title>
+  <title>Backend Smooth Operators</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link href="css/estilos.css" rel="stylesheet">
 </head>
 <body>
-  <?php require_once("includes/navbar.php");?>
+ <?php require_once("includes/navbar.php");   ?>
 
       <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4" id="main">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-          <h1 class="h2">Testimonials</h1>
+          <h1 class="h2">Bienvenido</h1>
           <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group mr-2">
               <button type="button" class="btn btn-sm btn-outline-danger cancelar">Cancelar</button>
@@ -24,14 +23,14 @@
             </div>
           </div>
         </div>
-        <h2>Testimonials</h2>
+        <h2>planes</h2>
         <div class="table-responsive view" id="show_data">
-          <table class="table table-striped table-sm" id="list-testimonials">
+          <table class="table table-striped table-sm" id="list-planes">
             <thead>
               <tr>
-                <th>Ruta Imagen</th>
-                <th>Cita</th>
-                <th>Persona</th>
+                <th>Nombre</th>
+                <th>descripcion</th>
+                <th>costo</th>
                 <th>Acciones</th>
               </tr>
             </thead>
@@ -43,20 +42,22 @@
             <div class="row">
               <div class="col">
                 <div class="form-group">
-                  <label for="imagen">Ruta Imagen</label>
-                  <input type="text" id="imagen" name="imagen" class="form-control">
+                  <label for="nombre">Nombre</label>
+                  <input type="text" id="nombre" name="nombre" class="form-control">
                 </div>
+
+                <div class="col">
                 <div class="form-group">
-                  <label for="cita">Cita</label>
-                  <input type="text" id="cita" name="cita" class="form-control">
+                  <label for="descripcion">descripcion</label>
+                  <input type="text" id="descripcion" name="descripcion" class="form-control">
                 </div>
-              </div>
-              <div class="col">
+                <div class="col">
                 <div class="form-group">
-                  <label for="persona">Persona</label>
-                  <input type="text" id="persona" name="persona" class="form-control">
+                  <label for="costo">costo</label>
+                  <input type="text" id="costo" name="costo" class="form-control">
                 </div>
-              </div>
+
+
             </div>
             <div class="row">
               <div class="col">
@@ -73,6 +74,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
   <script>
+    //muestra que vista (guardar o regirtrar) es visible
     function change_view(vista = 'show_data'){
       $("#main").find(".view").each(function(){
         // $(this).addClass("d-none");
@@ -86,25 +88,26 @@
 
     }
     function consultar(){
-      let obj = {
-        "accion" : "consultar_testimonials"
+         let obj = {
+        "accion" : "consultar_planes"  
       };
+      
       $.post("includes/_funciones.php", obj, function(respuesta){
         let template = ``;
         $.each(respuesta,function(i,e){
           template += `
           <tr>
-          <td>${e.img_tes}</td>
-          <td>${e.cita_tes}</td>
-          <td>${e.persona_tes}</td>
+          <td>${e.nombre_plan}</td>
+          <td>${e.desc_plan}</td>
+          <td>${e.costo_plan}</td>
           <td>
-           <a href="#" data-id="${e.id_tes}" class="ceditar_testimonials">Editar</a>
-          <a href="#" data-id="${e.id_tes}" class="eliminar_testimonials">Eliminar</a>
+          <a href="#" data-id="${e.id_plan}" class="editar_plan">Editar</a>
+          <a href="#" data-id="${e.id_plan}" class="eliminar_planes">Eliminar</a>
           </td>
           </tr>
           `;
         });
-        $("#list-testimonials tbody").html(template);
+        $("#list-planes tbody").html(template);
       },"JSON");
     }
     $(document).ready(function(){
@@ -116,17 +119,17 @@
     });
 
     $("#guardar_datos").click(function(){
-     // Funcion para guardar Datos
-      let imagen = $("#imagen").val();
-      let cita = $("#cita").val();
-      let persona = $("#persona").val();
-      // Inicializar el objetos
+      let nombre = $('#nombre').val();
+      let descripcion = $('#descripcion').val();
+      let costo = $('#costo').val();
+
       let obj ={
-        "accion" : "insertar_testimonials",
-        "imagen" : imagen,
-        "cita" : cita,
-        "persona" : persona
-      }
+        "accion" : "insertar_planes",
+        "nombre" : nombre,
+        "descripcion" : descripcion,
+        "costo" : costo
+
+      };
       $("#form_data").find("input").each(function(){
         $(this).removeClass("has-error");
         if($(this).val() != ""){
@@ -136,74 +139,76 @@
           return false;
         }
       });
-if($(this).data("editar") == 1){
-          obj["accion"] = "editar_testimonials";
-          obj["id"] = $(this).data("id");
-          $(this).text("Guardar").data("editar",0);
-          $("#form_data")[0].reset();
+      if($(this).data("editar") == 1){
+        obj["accion"] = "editar_planes";
+        obj["id"] = $(this).data("id");
+        $(this).text("Guardar").data("editar",0);
+        $("#form_data")[0].reset();
       }
-      $.post("includes/_funciones.php", obj, function(respuesta){ 
-       alert(respuesta);
-       if (respuesta == "Se inserto testimonials en la BD") {
+      $.post("includes/_funciones.php", obj, function(respuesta){
+          alert(respuesta);
+        if (respuesta == "Se inserto el usuario en la BD ") {
           change_view();
           consultar();
          }
-        if (respuesta == "Se edito testimonials correctamente") {
+        if (respuesta == "Se edito el usuario correctamente") {
             change_view();
             consultar();
-      } 
-     }
-     );
-    });
-
-//** ELIMINAR ENCABEZADOS **//
-
-$("#main").on("click",".eliminar_testimonials",function(e){
-e.preventDefault();
-let confirmacion = confirm("Desea eliminar esta variable");
-if(confirmacion){
-let id = $(this).data('id');
-obj = {
-  "accion" : "eliminar_testimonials",
-  "id" : id
-};
-$.post("includes/_funciones.php", obj, function(respuesta){
-alert(respuesta);
-consultar();
-});
-
-
-}else{
-  alert("El registro no se esta eliminado");
-}
-});
-
-//** EDITAR **//
-    $('#list-testimonials').on("click",".ceditar_testimonials", function(e){
-        e.preventDefault();
-    let id = $(this).data('id');
-         obj = {
-      "accion" : "ceditar_testimonials",
-      "id" : id
-    };
-    $("#form_data")[0].reset();
-    change_view('insert_data');
-    $("#guardar_datos").text("Editar").data("editar",1).data("id", id);
-    $.post('includes/_funciones.php', obj, function(r){
-      $("#imagen").val(r.img_tes);
-      $("#cita").val(r.cita_tes);
-      $("#persona").val(r.persona_tes);  
-        }, "JSON");
-
-       // consultar();          
+          }
+      });
+      });
+//eliminar usuarios
+    $("#main").on("click",".eliminar_planes" , function(e){
+      e.preventDefault();
+      let confirmacion= confirm("Desea eliminar este registro");
+      if (confirmacion) {
+        let id=$(this).data('id'),
+            obj ={
+              "accion":"eliminar_planes",
+              "id":id
+            };
+            $.post("includes/_funciones.php", obj, function(respuesta){
+              alert(respuesta);
+              consultar();
             });
 
 
-    $("#main").find(".cancelar").click(function(){
+      }
+      else{
+        alert("El registro no se ha eliminado");
+      }
+
+    });
+
+
+//editar registro
+$('#list-planes').on("click",".editar_plan", function(e){
+        e.preventDefault();
+        let id = $(this).data('id'),
+            obj = {
+              "accion" : "editar_plan",
+              "id" : id
+            };
+        $("#form_data")[0].reset();
+        change_view('insert_data');
+        $("#guardar_datos").text("Editar").data("editar",1).data("id",id);
+        $.post("includes/_funciones.php", obj, function(r){
+          $("#nombre").val(r.nombre_plan);
+          $("#descripcion").val(r.desc_plan);
+          $("#costo").val(r.costo_plan);
+
+
+        }, "JSON");
+            
+      });
+
+
+        $("#main").find(".cancelar").click(function(){
       change_view();
-      $("#form_data")[0].reset();      
+      $("#form_data")[0].reset();
       if ($("#guardar_datos").data("editar") == 1) {
         $("#guardar_datos").text("Guardar").data("editar",0);
+              
       }
     });
   </script>

@@ -8,7 +8,7 @@ require_once 'includes/database.php';
 $consulta = "SELECT * FROM planes";
 $planes =mysqli_query($conectar, $consulta);
 
-$consulA="SELECT * FROM aplicaciones";
+$consulA="SELECT * FROM app";
 $app=mysqli_query($conectar,$consulA);
 
 
@@ -197,7 +197,7 @@ $decon = $fil2['porcentaje'];
             <div class="box">
               <div class="icon"><a href=""><i class="fa fa-desktop"></i></a></div>
               <h4 class="title"><a href=""><?php echo $appli['nombre_app'] ?></a></h4>
-              <p class="description" align="justify"><?php echo $appli['descripcion_app'] ?></p>
+              <p class="description" align="justify"><?php echo $appli['desc_app'] ?></p>
             </div>
           </div>
 
@@ -227,7 +227,7 @@ $decon = $fil2['porcentaje'];
                 </div>
                 <h2><?php echo $pla['nombre_plan'] ?></h2>
                 <ul>
-                  <li align="justify"><?php echo $pla['Descripcion_plan'] ?></li>
+                  <li align="justify"><?php echo $pla['desc_plan'] ?></li>
 
                 </ul>
 
