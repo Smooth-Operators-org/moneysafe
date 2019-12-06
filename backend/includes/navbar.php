@@ -1,4 +1,11 @@
 
+<?php
+	session_start();
+	error_reporting(0);
+	$varsesion = $_SESSION['usuario'];
+
+	if (isset($varsesion)){
+?>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -44,3 +51,10 @@
       </nav>
 </body>
 </html>
+<?php 
+	}
+	else 
+	{
+		header("Location:index.php");
+	}
+?>

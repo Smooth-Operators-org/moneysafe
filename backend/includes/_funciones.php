@@ -175,10 +175,10 @@ function login(){
 		$correo = $_POST["correo"];
 		$pass = $_POST["password"];	
 
-		$consulta = "SELECT * FROM usuarios WHERE correo_usr = '$correo'";
+		$consulta = "SELECT * FROM usuarios WHERE email_usr = '$correo'";
 		$resultado = $mysqli->query($consulta);
 		$fila = $resultado->fetch_assoc();
-		
+		echo $fila;
 		if ($fila == 0) 
 			{
 
@@ -189,7 +189,7 @@ function login(){
 
 		else if ($fila["password_usr"] != $pass) 
 			{
-				$consulta = "SELECT * FROM usuarios WHERE correo_usr = '$correo' AND password_usr = '$pass'";
+				$consulta = "SELECT * FROM usuarios WHERE email_usr = '$correo' AND password_usr = '$pass'";
 				$resultado = $mysqli->query($consulta);
 				$fila = $resultado->fetch_assoc();
 
@@ -197,7 +197,7 @@ function login(){
 
 				
 			}
-				else if($correo == $fila["correo_usr"] && $pass == $fila["password_usr"])
+				else if($correo == $fila["email_usr"] && $pass == $fila["password_usr"])
 				{
 
 					echo "[1]"	;

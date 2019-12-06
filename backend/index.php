@@ -37,7 +37,10 @@
       "accion" : "login",
       "correo" : correo,
       "password" : pass  
+      
     };
+
+    
     if (correo == "" || pass == "") {
 
        alert("Ingresa Correo y Contraseña correctos");

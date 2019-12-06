@@ -5,7 +5,7 @@ require_once 'includes/database.php';
 <div><input type="text"  style="display: none" value="<?php $promo=$_GET['promo']?>"></div>
 <?php
 
-$consulta = "SELECT * FROM planes";
+$consulta = "SELECT * FROM planes where id_app=4";
 $planes =mysqli_query($conectar, $consulta);
 
 $consulA="SELECT * FROM app";
