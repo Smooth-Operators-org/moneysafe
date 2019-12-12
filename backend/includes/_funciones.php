@@ -4,6 +4,7 @@ switch ($_POST["accion"]) {
 	case 'login':
 	login();
 	break;
+	
 	//Productos
 	case 'consultar_usuarios':
 	consultar_usuarios();
@@ -124,8 +125,9 @@ function editar_planes($id){
 	$nombre = $_POST["nombre"];
 	$descripcion = $_POST["descripcion"];
 	$costo = $_POST["costo"];
+	$app=$_POST["app"];
 	
-	$consulta = "UPDATE planes SET nombre_plan = '$nombre', desc_plan = '$descripcion', costo_plan ='$costo' WHERE id_plan = $id";
+	$consulta = "UPDATE planes SET nombre_plan = '$nombre', desc_plan = '$descripcion', costo_plan ='$costo', id_app='$app'  WHERE id_plan = $id";
 	$resultado = mysqli_query($mysqli, $consulta);
     echo "Se edito el usuario correctamente";
 
@@ -156,12 +158,11 @@ function insertar_planes(){
 
 	$nombre_ap= $_POST["nombre"];
 	$descripcion_ap = $_POST["descripcion"];
-	$costo_ap = $_POST["costo"];	
-	echo $nombre_ap;
-	echo $descripcion_ap;
-	echo $costo_ap;
+	$costo_ap = $_POST["costo"];
+	$app =$_POST["app"];	
 
-	$consul1 = "INSERT INTO planes VALUES(null,'$nombre_ap','$descripcion_ap', $costo_ap)";
+
+	$consul1 = "INSERT INTO planes VALUES(null,'$nombre_ap','$descripcion_ap', $costo_ap, $app)";
 	$resul1 = mysqli_query($mysqli, $consul1);
 		echo "Se inserto el usuario en la BD ";
 		
@@ -207,6 +208,9 @@ function login(){
 					$_SESSION['usuarios']=$correo;
 					echo $correo;
 					echo $_SESSION['usuarios'];
+
+					
+
   					
 					
 				}

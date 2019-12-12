@@ -10,7 +10,7 @@
 <body>
    <body class="text-center">
     <form class="form-signin">
-  <img class="mb-4" src="img/logotipo.png">
+  <img class="mb-4" src="img/MS-Logo.png">
   <h1 id="text1" class="h3 mb-3 font-weight-normal">Inicio Sesion</h1>
   <label for="inputEmail" class="sr-only">Correo Electronico</label>
   <input type="email" id="inputEmail" class="form-control" placeholder="Dirección de correo" required autofocus>
@@ -22,7 +22,7 @@
     </label>
   </div>
   <button class="btn btn-lg btn-primary btn-block" id= "buttonSign" type="button">Iniciar</button>
-  <p class="mt-5 mb-3 text-muted">&copy; 2017-2019</p>
+  <p class="mt-5 mb-3 text-muted">&copy; echo 2020</p>
 </form>
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>

@@ -31,6 +31,7 @@
                 <th>Nombre</th>
                 <th>descripcion</th>
                 <th>costo</th>
+                <th>producto</th>
                 <th>Acciones</th>
               </tr>
             </thead>
@@ -55,6 +56,11 @@
                 <div class="form-group">
                   <label for="costo">costo</label>
                   <input type="text" id="costo" name="costo" class="form-control">
+                </div>
+                <div class="form-group">
+                <label for="app">app</label>
+                <input type="text" id="app" name="app" class="form-control">
+
                 </div>
 
 
@@ -100,6 +106,7 @@
           <td>${e.nombre_plan}</td>
           <td>${e.desc_plan}</td>
           <td>${e.costo_plan}</td>
+          <td>${e.id_app}</td>
           <td>
           <a href="#" data-id="${e.id_plan}" class="editar_plan">Editar</a>
           <a href="#" data-id="${e.id_plan}" class="eliminar_planes">Eliminar</a>
@@ -122,12 +129,14 @@
       let nombre = $('#nombre').val();
       let descripcion = $('#descripcion').val();
       let costo = $('#costo').val();
+      let app =$('#app').val();
 
       let obj ={
         "accion" : "insertar_planes",
         "nombre" : nombre,
         "descripcion" : descripcion,
-        "costo" : costo
+        "costo" : costo,
+        "app":app
 
       };
       $("#form_data").find("input").each(function(){
@@ -196,6 +205,7 @@ $('#list-planes').on("click",".editar_plan", function(e){
           $("#nombre").val(r.nombre_plan);
           $("#descripcion").val(r.desc_plan);
           $("#costo").val(r.costo_plan);
+          $("#app").val(r.id_app);
 
 
         }, "JSON");

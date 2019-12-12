@@ -6,7 +6,7 @@
   <meta name="description" content="">
   <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
   <meta name="generator" content="Jekyll v3.8.5">
-  <title>Dashboard Template · Bootstrap</title>
+  <title>Backend Smooth operators</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link href="css/estilos.css" rel="stylesheet">
 </head>
@@ -29,7 +29,7 @@
             <thead>
               <tr>
                 <th>Nombre</th>
-                <th>descripcion</th>
+                <th>Descripcion</th>
                 <th>Acciones</th>
               </tr>
             </thead>

@@ -94,6 +94,7 @@ $decon = $fil2['porcentaje'];
           <li><a href="#services">Productos</a></li>
           <li><a href="#team">Equipo</a></li>
           <li><a href="#contact">Contacto</a></li>
+          <li><i class="fa fa-user"></i><a href="http://gastos.smoothoperators.com.mx/MoneySafe-WebApp/modulos/login/index.php">Iniciar Sesión</a></li>
         </ul>
       </nav><!-- #nav-menu-container -->
     </div>
