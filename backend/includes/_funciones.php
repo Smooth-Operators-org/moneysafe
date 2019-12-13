@@ -110,7 +110,7 @@ function insertar_usuarios(){
 
 function consultar_planes(){
 	global $mysqli;
-	$consulta = "SELECT * FROM planes";
+	$consulta = "SELECT p1.id_plan, p1.nombre_plan, p1.desc_plan, p1.costo_plan, p2.nombre_app FROM planes p1 INNER JOIN app p2 on p1.id_app=  p2.id_app";
 	$resultado = mysqli_query($mysqli, $consulta);
 	$arreglo = [];
 	while($fila = mysqli_fetch_array($resultado)){

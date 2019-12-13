@@ -106,7 +106,7 @@
           <td>${e.nombre_plan}</td>
           <td>${e.desc_plan}</td>
           <td>${e.costo_plan}</td>
-          <td>${e.id_app}</td>
+          <td>${e.nombre_app}</td>
           <td>
           <a href="#" data-id="${e.id_plan}" class="editar_plan">Editar</a>
           <a href="#" data-id="${e.id_plan}" class="eliminar_planes">Eliminar</a>
